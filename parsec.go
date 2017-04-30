@@ -257,6 +257,19 @@ func Maybe(callb Nodify, parser interface{}) Parser {
 	}
 }
 
+// Optional combinator accepts a single parser, or reference to
+// a parser, and tries to match the input stream with it.
+// If the input stream doesn't match, the default terminal node is returned.
+func Optional(callb Nodify, parser interface{}, default_node ParsecNode) Parser {
+	return func(s Scanner) (ParsecNode, Scanner) {
+		n, news := doParse(parser, s.Clone())
+		if n == nil {
+			return default_node, s
+		}
+		return docallback(callb, []ParsecNode{n}), news
+	}
+}
+
 //---------------
 // Local function
 //---------------

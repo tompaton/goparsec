@@ -87,3 +87,31 @@ func TestManyUntilStopSep(t *testing.T) {
 		t.Errorf("ManyUntil() didn't stop %q", v)
 	}
 }
+
+func TestOptionalMissing(t *testing.T) {
+	w1 := Token("one", "W1")
+	w2 := Token("two", "W2")
+	x := Token("x", "X")
+	m := And(nil, w1, Optional(nil, x, Terminal{"X", "x", 0}), w2)
+	s := NewScanner([]byte("one two"))
+	v, e := m(s)
+	if v == nil {
+		t.Errorf("Optional() didn't match %q", e)
+	} else if len(v.([]ParsecNode)) != 3 {
+		t.Errorf("Optional() didn't match %q", v)
+	}
+}
+
+func TestOptionalPresent(t *testing.T) {
+	w1 := Token("one", "W1")
+	w2 := Token("two", "W2")
+	x := Token("x", "X")
+	m := And(nil, w1, Optional(nil, x, Terminal{"X", "x", 0}), w2)
+	s := NewScanner([]byte("one x two"))
+	v, e := m(s)
+	if v == nil {
+		t.Errorf("Optional() didn't match %q", e)
+	} else if len(v.([]ParsecNode)) != 3 {
+		t.Errorf("Optional() didn't match %q", v)
+	}
+}

@@ -149,6 +149,18 @@ input text.
 nodify callback is called with a slice of single parsecNode element if
 `Maybe` succeeds, otherwise callback is ignored.
 
+Optional
+~~~~~
+
+.. code-block:: go
+    func Optional(callb Nodify, parser interface{}, default ParsecNode) Parser {
+
+accepts a parser that can either match or does-not-match with current
+input text.
+
+nodify callback is called with a slice of single parsecNode element if
+`Optional` succeeds, otherwise the default parsecNode is returned.
+
 using the builtin scanner
 -------------------------
 
