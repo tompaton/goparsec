@@ -8,7 +8,7 @@ import "fmt"
 import "reflect"
 import "testing"
 
-import "github.com/prataprc/goparsec"
+import "github.com/tompaton/goparsec"
 
 var _ = fmt.Sprintf("dummy print")
 

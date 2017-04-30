@@ -9,7 +9,7 @@ import "fmt"
 import "unicode/utf8"
 import "unicode/utf16"
 
-import "github.com/prataprc/goparsec"
+import "github.com/tompaton/goparsec"
 
 var _ = fmt.Sprintf("dummy print")
 

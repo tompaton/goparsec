@@ -7,9 +7,9 @@ import "fmt"
 import "io/ioutil"
 import "os"
 
-import "github.com/prataprc/goparsec"
-import "github.com/prataprc/goparsec/expr"
-import "github.com/prataprc/goparsec/json"
+import "github.com/tompaton/goparsec"
+import "github.com/tompaton/goparsec/expr"
+import "github.com/tompaton/goparsec/json"
 
 var options struct {
 	expr string
