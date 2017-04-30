@@ -12,7 +12,7 @@ This package contains following components,
 * regular expression based scanner.
 * standard set of terminal tokens.
 
-**API reference**: https://godoc.org/github.com/prataprc/goparsec
+**API reference**: https://godoc.org/github.com/tompaton/goparsec
 
 combinators
 ~~~~~~~~~~~
