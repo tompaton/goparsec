@@ -37,3 +37,12 @@ func TestNotNoEnd(t *testing.T) {
 		t.Errorf("NoEnd() shouldn't have matched %q", v)
 	}
 }
+
+func TestCaseInsensitive(t *testing.T) {
+	in := []string{"abc", "def"}
+	want := []string{"(?i)abc", "(?i)def"}
+	out := case_insensitive(in)
+	if out[0] != want[0] || out[1] != want[1] {
+		t.Errorf("case_insensitive(%q) == %q, want %q", in, out, want)
+	}
+}

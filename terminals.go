@@ -121,6 +121,26 @@ func OrdTokens(patterns []string, names []string) Parser {
 	}
 }
 
+// Case-insensitive variation of Token
+// - automatically prefixes pattern with (?i) flag.
+func TokenCI(pattern string, name string) Parser {
+	return Token(case_insensitive([]string{pattern})[0], name)
+}
+
+// Case-insensitive variation of OrdTokens
+// - automatically prefixes patterns with (?i) flag.
+func OrdTokensCI(patterns []string, names []string) Parser {
+	return OrdTokens(case_insensitive(patterns), names)
+}
+
+// helper to prefix each pattern string with (?i) to make it case-insensitive
+func case_insensitive(patterns []string) (result []string) {
+	for _, pattern := range patterns {
+		result = append(result, "(?i)" + pattern)
+	}
+	return
+}
+
 // End is a parser function to detect end of scanner output.
 func End() Parser {
 	return func(s Scanner) (ParsecNode, Scanner) {
